@@ -34,3 +34,7 @@ body { font-size: 16px;}
   opacity: 1;
   fill: #ffffff;
 }
+
+.selected{
+  color: blue !important;
+}
