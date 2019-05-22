@@ -10,16 +10,16 @@
   // Variables should always come first, either "let" or "const" statements
 
   //"let" stores the referene to element as a variable (in memory) we can call to it
-  let svgGraphic = document.querySelector("#badgeSVG"),
-      mainHeadline = document.querySelector(".main-headline"),
+  let mainHeadline = document.querySelector(".main-headline"),
       svgHeadline = document.querySelector(".svgHeading"),
-      swapTextButton = document.querySelector(".switch-type");
+      swapTextButton = document.querySelector(".switch-type"),
+      allImages = document.querySelectorAll("#image-container img"),
+      objectButton = document.querySelector(".container button");
 
   //functions are reusable pieces of code that you can run any time
   function logMyId() {
     console.log(this.id);
-
-    this.style.opacity = 0.5;
+    // toggle a class here with classList
   }
 
   function swapText(){
@@ -29,9 +29,18 @@
     svgHeadline.classList.toggle("selected");
   }
 
+  function logTheSVG(){
+    console.log(this.previousElementSibling.id);
+  }
+
   //events always go at the bottom
 
-  svgGraphic.addEventListener("click", logMyId);
-  swapTextButton.addEventListener("click", swapText)
+  swapTextButton.addEventListener("click", swapText);
 
+  // select and loop through a bunch of items at once -> "one to many" relationship
+  allImages.forEach(item => {
+    item.addEventListener("click", logMyId);
+  });
+
+  objectButton.addEventListener("click", logTheSVG);
 })();
